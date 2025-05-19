@@ -1,0 +1,119 @@
+'use client'
+
+import { get, useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import Dropzone from "react-dropzone";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
+import { imageSchema, ImageSchemaType } from "@/types/schemas";
+import { getSignedUploadUrl, uploadPicture } from "@/actions/db-actions";
+import axios from 'axios'
+
+export default function page() {
+    const form = useForm<ImageSchemaType>({
+        resolver: zodResolver(imageSchema),
+        defaultValues: {
+            name: "",
+            caption: "",
+        }
+    });
+
+
+
+    async function onSubmit(values: ImageSchemaType) {
+        try {
+            const key = values.file.name + new Date().getTime()
+            const url = await getSignedUploadUrl(key)
+            if (url.data) {
+                const result = await axios.put(url.data, values.file, {
+                    headers: {
+                        "Content-Type": values.file.type
+                    }
+                });
+                if (result.status === 200) {
+                    uploadPicture({
+                        name: values.name,
+                        caption: values.caption,
+                        imageUrl: key
+                    })
+                }
+                console.log("image uploaded")
+            }
+
+        } catch (error) {
+            console.error('Upload failed:', error);
+        }
+    };
+
+    return (
+        <div className="h-full">
+            <div className="h-full w-full flex flex-col items-center gap-y-5">
+                <h1 className="text-4xl">upload new image</h1>
+                <Form {...form}>
+                    <form onSubmit={form.handleSubmit(onSubmit)} className="w-1/2 space-y-4">
+                        <FormField
+                            control={form.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormControl>
+                                        <Input placeholder="name" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="caption"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormControl>
+                                        <Input placeholder="caption" {...field} />
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={form.control}
+                            name="file"
+                            render={({ field: { onChange, value } }) => (
+                                <FormItem>
+                                    <FormControl>
+                                        <Dropzone
+                                            onDrop={acceptedFiles => {
+                                                onChange(acceptedFiles[0]);
+                                            }}
+                                        >
+                                            {({ getRootProps, getInputProps }) => (
+                                                <div className="w-full h-32 flex justify-center items-center border border-gray-400 bg-gray-700 text-foreground cursor-pointer rounded-lg" {...getRootProps()}>
+                                                    <input {...getInputProps()} />
+                                                    {value ? (
+                                                        <p className="text-sm">{value.name}</p>
+                                                    ) : (
+                                                        <p>drop file or click for dialog</p>
+                                                    )}
+                                                </div>
+                                            )}
+                                        </Dropzone>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <Button
+                            type="submit"
+                            className="w-full"
+                            disabled={!form.formState.isValid}
+                        >
+                            upload image
+                        </Button>
+                    </form>
+                </Form>
+            </div>
+        </div>
+
+    );
+}
