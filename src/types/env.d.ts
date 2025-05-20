@@ -7,5 +7,6 @@ namespace NodeJS {
         R2_SECRET_KEY: string
         R2_ENDPOINT: string;
         R2_PUBLIC_URL: string;
+        R2_BUCKET_NAME: string
     }
 }

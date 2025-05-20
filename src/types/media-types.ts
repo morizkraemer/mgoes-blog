@@ -4,3 +4,4 @@ export type PictureType = {
     caption: string
     imageUrl?: string
 }
+

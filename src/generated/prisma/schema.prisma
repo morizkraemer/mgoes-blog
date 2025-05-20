@@ -9,9 +9,28 @@ datasource db {
 }
 
 model Image {
-  id        String   @id @default(cuid())
-  name      String
-  caption   String
-  imageUrl  String
-  createdAt DateTime @default(now())
+  id             String   @id @default(cuid())
+  name           String
+  caption        String
+  imageBucketKey String
+  createdAt      DateTime @default(now())
+}
+
+model Album {
+  id                String  @id @default(cuid())
+  name              String
+  artist            String
+  tracks            Track[] @relation
+  albumArtBucketKey String
+}
+
+model Track {
+  id             String @id @default(cuid())
+  title          String
+  album          Album  @relation(fields: [albumId], references: [id])
+  albumId        String
+  artist         String
+  duration       String
+  remixers       String
+  trackBucketKey String
 }

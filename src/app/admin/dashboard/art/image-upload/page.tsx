@@ -7,8 +7,9 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { imageSchema, ImageSchemaType } from "@/types/schemas";
-import { getSignedUploadUrl, uploadPicture } from "@/actions/db-actions";
+import { addImageToDb } from "@/actions/db-images-actions";
 import axios from 'axios'
+import { getSignedUploadUrl } from "@/actions/r2-actions";
 
 export default function page() {
     const form = useForm<ImageSchemaType>({
@@ -23,19 +24,18 @@ export default function page() {
 
     async function onSubmit(values: ImageSchemaType) {
         try {
-            const key = values.file.name + new Date().getTime()
-            const url = await getSignedUploadUrl(key)
+            const url = await getSignedUploadUrl(values.file.name)
             if (url.data) {
-                const result = await axios.put(url.data, values.file, {
+                const result = await axios.put(url.data.url, values.file, {
                     headers: {
                         "Content-Type": values.file.type
                     }
                 });
                 if (result.status === 200) {
-                    uploadPicture({
+                    addImageToDb({
                         name: values.name,
                         caption: values.caption,
-                        imageUrl: key
+                        imageKey: url.data.uniqueKey
                     })
                 }
                 console.log("image uploaded")

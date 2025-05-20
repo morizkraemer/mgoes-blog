@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { ThemeProvider } from "@/components/ui/theme-provider";
+import { ThemeProvider } from 'next-themes'
+import "./globals.css"
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-    title: "Merlins Internet",
+    title: "merlins internet",
     description: "get ur shit",
 };
 
@@ -24,18 +24,18 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en" suppressHydrationWarning>
-            <body
-                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-            >
-                <ThemeProvider
-                    attribute="class"
-                    defaultTheme="dark"
-                    disableTransitionOnChange
+        <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+        >
+            <html lang="en" suppressHydrationWarning>
+                <body
+                    className={`${geistSans.variable} ${geistMono.variable} antialiased`}
                 >
                     {children}
-                </ThemeProvider>
-            </body>
-        </html>
+                </body>
+            </html>
+        </ThemeProvider>
     );
 }

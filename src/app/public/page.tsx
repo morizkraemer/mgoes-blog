@@ -1,9 +1,9 @@
-import { getAllPictures } from "@/actions/db-actions"
+import { getAllImages } from "@/actions/db-images-actions"
 import Image from "next/image";
 
 export default async function page() {
 
-    const images = await getAllPictures();
+    const images = await getAllImages();
 
     if (!images) return <div>no images</div>
 
@@ -12,7 +12,8 @@ export default async function page() {
             {
                 images.data!.map((image) => {
                     console.log(image)
-                    return <Image key={image.imageUrl} src={image.imageUrl} alt={image.caption} width={400} height={400}/>
+                    const bucketUrl = process.env.R2_PUBLIC_URL + image.imageBucketKey
+                    return <Image key={bucketUrl} src={bucketUrl} alt={image.caption} width={400} height={400}/>
                 })
             }
         </div>

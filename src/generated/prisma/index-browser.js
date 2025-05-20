@@ -124,8 +124,25 @@ exports.Prisma.ImageScalarFieldEnum = {
   id: 'id',
   name: 'name',
   caption: 'caption',
-  imageUrl: 'imageUrl',
+  imageBucketKey: 'imageBucketKey',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.AlbumScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  artist: 'artist',
+  albumArtBucketKey: 'albumArtBucketKey'
+};
+
+exports.Prisma.TrackScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  albumId: 'albumId',
+  artist: 'artist',
+  duration: 'duration',
+  remixers: 'remixers',
+  trackBucketKey: 'trackBucketKey'
 };
 
 exports.Prisma.SortOrder = {
@@ -140,7 +157,9 @@ exports.Prisma.QueryMode = {
 
 
 exports.Prisma.ModelName = {
-  Image: 'Image'
+  Image: 'Image',
+  Album: 'Album',
+  Track: 'Track'
 };
 
 /**

@@ -18,6 +18,16 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type Image = $Result.DefaultSelection<Prisma.$ImagePayload>
+/**
+ * Model Album
+ * 
+ */
+export type Album = $Result.DefaultSelection<Prisma.$AlbumPayload>
+/**
+ * Model Track
+ * 
+ */
+export type Track = $Result.DefaultSelection<Prisma.$TrackPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -153,6 +163,26 @@ export class PrismaClient<
     * ```
     */
   get image(): Prisma.ImageDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.album`: Exposes CRUD operations for the **Album** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Albums
+    * const albums = await prisma.album.findMany()
+    * ```
+    */
+  get album(): Prisma.AlbumDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.track`: Exposes CRUD operations for the **Track** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tracks
+    * const tracks = await prisma.track.findMany()
+    * ```
+    */
+  get track(): Prisma.TrackDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -593,7 +623,9 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    Image: 'Image'
+    Image: 'Image',
+    Album: 'Album',
+    Track: 'Track'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -612,7 +644,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "image"
+      modelProps: "image" | "album" | "track"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -687,6 +719,154 @@ export namespace Prisma {
           count: {
             args: Prisma.ImageCountArgs<ExtArgs>
             result: $Utils.Optional<ImageCountAggregateOutputType> | number
+          }
+        }
+      }
+      Album: {
+        payload: Prisma.$AlbumPayload<ExtArgs>
+        fields: Prisma.AlbumFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.AlbumFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.AlbumFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
+          }
+          findFirst: {
+            args: Prisma.AlbumFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.AlbumFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
+          }
+          findMany: {
+            args: Prisma.AlbumFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>[]
+          }
+          create: {
+            args: Prisma.AlbumCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
+          }
+          createMany: {
+            args: Prisma.AlbumCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.AlbumCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>[]
+          }
+          delete: {
+            args: Prisma.AlbumDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
+          }
+          update: {
+            args: Prisma.AlbumUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
+          }
+          deleteMany: {
+            args: Prisma.AlbumDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.AlbumUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.AlbumUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>[]
+          }
+          upsert: {
+            args: Prisma.AlbumUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$AlbumPayload>
+          }
+          aggregate: {
+            args: Prisma.AlbumAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateAlbum>
+          }
+          groupBy: {
+            args: Prisma.AlbumGroupByArgs<ExtArgs>
+            result: $Utils.Optional<AlbumGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.AlbumCountArgs<ExtArgs>
+            result: $Utils.Optional<AlbumCountAggregateOutputType> | number
+          }
+        }
+      }
+      Track: {
+        payload: Prisma.$TrackPayload<ExtArgs>
+        fields: Prisma.TrackFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.TrackFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.TrackFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          findFirst: {
+            args: Prisma.TrackFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.TrackFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          findMany: {
+            args: Prisma.TrackFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>[]
+          }
+          create: {
+            args: Prisma.TrackCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          createMany: {
+            args: Prisma.TrackCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          createManyAndReturn: {
+            args: Prisma.TrackCreateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>[]
+          }
+          delete: {
+            args: Prisma.TrackDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          update: {
+            args: Prisma.TrackUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          deleteMany: {
+            args: Prisma.TrackDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.TrackUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateManyAndReturn: {
+            args: Prisma.TrackUpdateManyAndReturnArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>[]
+          }
+          upsert: {
+            args: Prisma.TrackUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$TrackPayload>
+          }
+          aggregate: {
+            args: Prisma.TrackAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTrack>
+          }
+          groupBy: {
+            args: Prisma.TrackGroupByArgs<ExtArgs>
+            result: $Utils.Optional<TrackGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.TrackCountArgs<ExtArgs>
+            result: $Utils.Optional<TrackCountAggregateOutputType> | number
           }
         }
       }
@@ -775,6 +955,8 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     image?: ImageOmit
+    album?: AlbumOmit
+    track?: TrackOmit
   }
 
   /* Types for Logging */
@@ -864,6 +1046,36 @@ export namespace Prisma {
    */
 
 
+  /**
+   * Count Type AlbumCountOutputType
+   */
+
+  export type AlbumCountOutputType = {
+    tracks: number
+  }
+
+  export type AlbumCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tracks?: boolean | AlbumCountOutputTypeCountTracksArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * AlbumCountOutputType without action
+   */
+  export type AlbumCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the AlbumCountOutputType
+     */
+    select?: AlbumCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * AlbumCountOutputType without action
+   */
+  export type AlbumCountOutputTypeCountTracksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrackWhereInput
+  }
+
 
   /**
    * Models
@@ -883,7 +1095,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     caption: string | null
-    imageUrl: string | null
+    imageBucketKey: string | null
     createdAt: Date | null
   }
 
@@ -891,7 +1103,7 @@ export namespace Prisma {
     id: string | null
     name: string | null
     caption: string | null
-    imageUrl: string | null
+    imageBucketKey: string | null
     createdAt: Date | null
   }
 
@@ -899,7 +1111,7 @@ export namespace Prisma {
     id: number
     name: number
     caption: number
-    imageUrl: number
+    imageBucketKey: number
     createdAt: number
     _all: number
   }
@@ -909,7 +1121,7 @@ export namespace Prisma {
     id?: true
     name?: true
     caption?: true
-    imageUrl?: true
+    imageBucketKey?: true
     createdAt?: true
   }
 
@@ -917,7 +1129,7 @@ export namespace Prisma {
     id?: true
     name?: true
     caption?: true
-    imageUrl?: true
+    imageBucketKey?: true
     createdAt?: true
   }
 
@@ -925,7 +1137,7 @@ export namespace Prisma {
     id?: true
     name?: true
     caption?: true
-    imageUrl?: true
+    imageBucketKey?: true
     createdAt?: true
     _all?: true
   }
@@ -1006,7 +1218,7 @@ export namespace Prisma {
     id: string
     name: string
     caption: string
-    imageUrl: string
+    imageBucketKey: string
     createdAt: Date
     _count: ImageCountAggregateOutputType | null
     _min: ImageMinAggregateOutputType | null
@@ -1031,7 +1243,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     caption?: boolean
-    imageUrl?: boolean
+    imageBucketKey?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["image"]>
 
@@ -1039,7 +1251,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     caption?: boolean
-    imageUrl?: boolean
+    imageBucketKey?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["image"]>
 
@@ -1047,7 +1259,7 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     caption?: boolean
-    imageUrl?: boolean
+    imageBucketKey?: boolean
     createdAt?: boolean
   }, ExtArgs["result"]["image"]>
 
@@ -1055,11 +1267,11 @@ export namespace Prisma {
     id?: boolean
     name?: boolean
     caption?: boolean
-    imageUrl?: boolean
+    imageBucketKey?: boolean
     createdAt?: boolean
   }
 
-  export type ImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "caption" | "imageUrl" | "createdAt", ExtArgs["result"]["image"]>
+  export type ImageOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "caption" | "imageBucketKey" | "createdAt", ExtArgs["result"]["image"]>
 
   export type $ImagePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Image"
@@ -1068,7 +1280,7 @@ export namespace Prisma {
       id: string
       name: string
       caption: string
-      imageUrl: string
+      imageBucketKey: string
       createdAt: Date
     }, ExtArgs["result"]["image"]>
     composites: {}
@@ -1496,7 +1708,7 @@ export namespace Prisma {
     readonly id: FieldRef<"Image", 'String'>
     readonly name: FieldRef<"Image", 'String'>
     readonly caption: FieldRef<"Image", 'String'>
-    readonly imageUrl: FieldRef<"Image", 'String'>
+    readonly imageBucketKey: FieldRef<"Image", 'String'>
     readonly createdAt: FieldRef<"Image", 'DateTime'>
   }
     
@@ -1865,6 +2077,2147 @@ export namespace Prisma {
 
 
   /**
+   * Model Album
+   */
+
+  export type AggregateAlbum = {
+    _count: AlbumCountAggregateOutputType | null
+    _min: AlbumMinAggregateOutputType | null
+    _max: AlbumMaxAggregateOutputType | null
+  }
+
+  export type AlbumMinAggregateOutputType = {
+    id: string | null
+    name: string | null
+    artist: string | null
+    albumArtBucketKey: string | null
+  }
+
+  export type AlbumMaxAggregateOutputType = {
+    id: string | null
+    name: string | null
+    artist: string | null
+    albumArtBucketKey: string | null
+  }
+
+  export type AlbumCountAggregateOutputType = {
+    id: number
+    name: number
+    artist: number
+    albumArtBucketKey: number
+    _all: number
+  }
+
+
+  export type AlbumMinAggregateInputType = {
+    id?: true
+    name?: true
+    artist?: true
+    albumArtBucketKey?: true
+  }
+
+  export type AlbumMaxAggregateInputType = {
+    id?: true
+    name?: true
+    artist?: true
+    albumArtBucketKey?: true
+  }
+
+  export type AlbumCountAggregateInputType = {
+    id?: true
+    name?: true
+    artist?: true
+    albumArtBucketKey?: true
+    _all?: true
+  }
+
+  export type AlbumAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Album to aggregate.
+     */
+    where?: AlbumWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Albums to fetch.
+     */
+    orderBy?: AlbumOrderByWithRelationInput | AlbumOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: AlbumWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Albums from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Albums.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Albums
+    **/
+    _count?: true | AlbumCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: AlbumMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: AlbumMaxAggregateInputType
+  }
+
+  export type GetAlbumAggregateType<T extends AlbumAggregateArgs> = {
+        [P in keyof T & keyof AggregateAlbum]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateAlbum[P]>
+      : GetScalarType<T[P], AggregateAlbum[P]>
+  }
+
+
+
+
+  export type AlbumGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: AlbumWhereInput
+    orderBy?: AlbumOrderByWithAggregationInput | AlbumOrderByWithAggregationInput[]
+    by: AlbumScalarFieldEnum[] | AlbumScalarFieldEnum
+    having?: AlbumScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: AlbumCountAggregateInputType | true
+    _min?: AlbumMinAggregateInputType
+    _max?: AlbumMaxAggregateInputType
+  }
+
+  export type AlbumGroupByOutputType = {
+    id: string
+    name: string
+    artist: string
+    albumArtBucketKey: string
+    _count: AlbumCountAggregateOutputType | null
+    _min: AlbumMinAggregateOutputType | null
+    _max: AlbumMaxAggregateOutputType | null
+  }
+
+  type GetAlbumGroupByPayload<T extends AlbumGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<AlbumGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof AlbumGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], AlbumGroupByOutputType[P]>
+            : GetScalarType<T[P], AlbumGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type AlbumSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    artist?: boolean
+    albumArtBucketKey?: boolean
+    tracks?: boolean | Album$tracksArgs<ExtArgs>
+    _count?: boolean | AlbumCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["album"]>
+
+  export type AlbumSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    artist?: boolean
+    albumArtBucketKey?: boolean
+  }, ExtArgs["result"]["album"]>
+
+  export type AlbumSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    artist?: boolean
+    albumArtBucketKey?: boolean
+  }, ExtArgs["result"]["album"]>
+
+  export type AlbumSelectScalar = {
+    id?: boolean
+    name?: boolean
+    artist?: boolean
+    albumArtBucketKey?: boolean
+  }
+
+  export type AlbumOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "artist" | "albumArtBucketKey", ExtArgs["result"]["album"]>
+  export type AlbumInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tracks?: boolean | Album$tracksArgs<ExtArgs>
+    _count?: boolean | AlbumCountOutputTypeDefaultArgs<ExtArgs>
+  }
+  export type AlbumIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+  export type AlbumIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
+
+  export type $AlbumPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Album"
+    objects: {
+      tracks: Prisma.$TrackPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      name: string
+      artist: string
+      albumArtBucketKey: string
+    }, ExtArgs["result"]["album"]>
+    composites: {}
+  }
+
+  type AlbumGetPayload<S extends boolean | null | undefined | AlbumDefaultArgs> = $Result.GetResult<Prisma.$AlbumPayload, S>
+
+  type AlbumCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<AlbumFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: AlbumCountAggregateInputType | true
+    }
+
+  export interface AlbumDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Album'], meta: { name: 'Album' } }
+    /**
+     * Find zero or one Album that matches the filter.
+     * @param {AlbumFindUniqueArgs} args - Arguments to find a Album
+     * @example
+     * // Get one Album
+     * const album = await prisma.album.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends AlbumFindUniqueArgs>(args: SelectSubset<T, AlbumFindUniqueArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Album that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {AlbumFindUniqueOrThrowArgs} args - Arguments to find a Album
+     * @example
+     * // Get one Album
+     * const album = await prisma.album.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends AlbumFindUniqueOrThrowArgs>(args: SelectSubset<T, AlbumFindUniqueOrThrowArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Album that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlbumFindFirstArgs} args - Arguments to find a Album
+     * @example
+     * // Get one Album
+     * const album = await prisma.album.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends AlbumFindFirstArgs>(args?: SelectSubset<T, AlbumFindFirstArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Album that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlbumFindFirstOrThrowArgs} args - Arguments to find a Album
+     * @example
+     * // Get one Album
+     * const album = await prisma.album.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends AlbumFindFirstOrThrowArgs>(args?: SelectSubset<T, AlbumFindFirstOrThrowArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Albums that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlbumFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Albums
+     * const albums = await prisma.album.findMany()
+     * 
+     * // Get first 10 Albums
+     * const albums = await prisma.album.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const albumWithIdOnly = await prisma.album.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends AlbumFindManyArgs>(args?: SelectSubset<T, AlbumFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Album.
+     * @param {AlbumCreateArgs} args - Arguments to create a Album.
+     * @example
+     * // Create one Album
+     * const Album = await prisma.album.create({
+     *   data: {
+     *     // ... data to create a Album
+     *   }
+     * })
+     * 
+     */
+    create<T extends AlbumCreateArgs>(args: SelectSubset<T, AlbumCreateArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Albums.
+     * @param {AlbumCreateManyArgs} args - Arguments to create many Albums.
+     * @example
+     * // Create many Albums
+     * const album = await prisma.album.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends AlbumCreateManyArgs>(args?: SelectSubset<T, AlbumCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Albums and returns the data saved in the database.
+     * @param {AlbumCreateManyAndReturnArgs} args - Arguments to create many Albums.
+     * @example
+     * // Create many Albums
+     * const album = await prisma.album.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Albums and only return the `id`
+     * const albumWithIdOnly = await prisma.album.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends AlbumCreateManyAndReturnArgs>(args?: SelectSubset<T, AlbumCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Album.
+     * @param {AlbumDeleteArgs} args - Arguments to delete one Album.
+     * @example
+     * // Delete one Album
+     * const Album = await prisma.album.delete({
+     *   where: {
+     *     // ... filter to delete one Album
+     *   }
+     * })
+     * 
+     */
+    delete<T extends AlbumDeleteArgs>(args: SelectSubset<T, AlbumDeleteArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Album.
+     * @param {AlbumUpdateArgs} args - Arguments to update one Album.
+     * @example
+     * // Update one Album
+     * const album = await prisma.album.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends AlbumUpdateArgs>(args: SelectSubset<T, AlbumUpdateArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Albums.
+     * @param {AlbumDeleteManyArgs} args - Arguments to filter Albums to delete.
+     * @example
+     * // Delete a few Albums
+     * const { count } = await prisma.album.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends AlbumDeleteManyArgs>(args?: SelectSubset<T, AlbumDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Albums.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlbumUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Albums
+     * const album = await prisma.album.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends AlbumUpdateManyArgs>(args: SelectSubset<T, AlbumUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Albums and returns the data updated in the database.
+     * @param {AlbumUpdateManyAndReturnArgs} args - Arguments to update many Albums.
+     * @example
+     * // Update many Albums
+     * const album = await prisma.album.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Albums and only return the `id`
+     * const albumWithIdOnly = await prisma.album.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends AlbumUpdateManyAndReturnArgs>(args: SelectSubset<T, AlbumUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Album.
+     * @param {AlbumUpsertArgs} args - Arguments to update or create a Album.
+     * @example
+     * // Update or create a Album
+     * const album = await prisma.album.upsert({
+     *   create: {
+     *     // ... data to create a Album
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Album we want to update
+     *   }
+     * })
+     */
+    upsert<T extends AlbumUpsertArgs>(args: SelectSubset<T, AlbumUpsertArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Albums.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlbumCountArgs} args - Arguments to filter Albums to count.
+     * @example
+     * // Count the number of Albums
+     * const count = await prisma.album.count({
+     *   where: {
+     *     // ... the filter for the Albums we want to count
+     *   }
+     * })
+    **/
+    count<T extends AlbumCountArgs>(
+      args?: Subset<T, AlbumCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], AlbumCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Album.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlbumAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends AlbumAggregateArgs>(args: Subset<T, AlbumAggregateArgs>): Prisma.PrismaPromise<GetAlbumAggregateType<T>>
+
+    /**
+     * Group by Album.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {AlbumGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends AlbumGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: AlbumGroupByArgs['orderBy'] }
+        : { orderBy?: AlbumGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, AlbumGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetAlbumGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Album model
+   */
+  readonly fields: AlbumFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Album.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__AlbumClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tracks<T extends Album$tracksArgs<ExtArgs> = {}>(args?: Subset<T, Album$tracksArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Album model
+   */
+  interface AlbumFieldRefs {
+    readonly id: FieldRef<"Album", 'String'>
+    readonly name: FieldRef<"Album", 'String'>
+    readonly artist: FieldRef<"Album", 'String'>
+    readonly albumArtBucketKey: FieldRef<"Album", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Album findUnique
+   */
+  export type AlbumFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter, which Album to fetch.
+     */
+    where: AlbumWhereUniqueInput
+  }
+
+  /**
+   * Album findUniqueOrThrow
+   */
+  export type AlbumFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter, which Album to fetch.
+     */
+    where: AlbumWhereUniqueInput
+  }
+
+  /**
+   * Album findFirst
+   */
+  export type AlbumFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter, which Album to fetch.
+     */
+    where?: AlbumWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Albums to fetch.
+     */
+    orderBy?: AlbumOrderByWithRelationInput | AlbumOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Albums.
+     */
+    cursor?: AlbumWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Albums from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Albums.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Albums.
+     */
+    distinct?: AlbumScalarFieldEnum | AlbumScalarFieldEnum[]
+  }
+
+  /**
+   * Album findFirstOrThrow
+   */
+  export type AlbumFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter, which Album to fetch.
+     */
+    where?: AlbumWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Albums to fetch.
+     */
+    orderBy?: AlbumOrderByWithRelationInput | AlbumOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Albums.
+     */
+    cursor?: AlbumWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Albums from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Albums.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Albums.
+     */
+    distinct?: AlbumScalarFieldEnum | AlbumScalarFieldEnum[]
+  }
+
+  /**
+   * Album findMany
+   */
+  export type AlbumFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter, which Albums to fetch.
+     */
+    where?: AlbumWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Albums to fetch.
+     */
+    orderBy?: AlbumOrderByWithRelationInput | AlbumOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Albums.
+     */
+    cursor?: AlbumWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Albums from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Albums.
+     */
+    skip?: number
+    distinct?: AlbumScalarFieldEnum | AlbumScalarFieldEnum[]
+  }
+
+  /**
+   * Album create
+   */
+  export type AlbumCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Album.
+     */
+    data: XOR<AlbumCreateInput, AlbumUncheckedCreateInput>
+  }
+
+  /**
+   * Album createMany
+   */
+  export type AlbumCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Albums.
+     */
+    data: AlbumCreateManyInput | AlbumCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Album createManyAndReturn
+   */
+  export type AlbumCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * The data used to create many Albums.
+     */
+    data: AlbumCreateManyInput | AlbumCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Album update
+   */
+  export type AlbumUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Album.
+     */
+    data: XOR<AlbumUpdateInput, AlbumUncheckedUpdateInput>
+    /**
+     * Choose, which Album to update.
+     */
+    where: AlbumWhereUniqueInput
+  }
+
+  /**
+   * Album updateMany
+   */
+  export type AlbumUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Albums.
+     */
+    data: XOR<AlbumUpdateManyMutationInput, AlbumUncheckedUpdateManyInput>
+    /**
+     * Filter which Albums to update
+     */
+    where?: AlbumWhereInput
+    /**
+     * Limit how many Albums to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Album updateManyAndReturn
+   */
+  export type AlbumUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * The data used to update Albums.
+     */
+    data: XOR<AlbumUpdateManyMutationInput, AlbumUncheckedUpdateManyInput>
+    /**
+     * Filter which Albums to update
+     */
+    where?: AlbumWhereInput
+    /**
+     * Limit how many Albums to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Album upsert
+   */
+  export type AlbumUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Album to update in case it exists.
+     */
+    where: AlbumWhereUniqueInput
+    /**
+     * In case the Album found by the `where` argument doesn't exist, create a new Album with this data.
+     */
+    create: XOR<AlbumCreateInput, AlbumUncheckedCreateInput>
+    /**
+     * In case the Album was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<AlbumUpdateInput, AlbumUncheckedUpdateInput>
+  }
+
+  /**
+   * Album delete
+   */
+  export type AlbumDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+    /**
+     * Filter which Album to delete.
+     */
+    where: AlbumWhereUniqueInput
+  }
+
+  /**
+   * Album deleteMany
+   */
+  export type AlbumDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Albums to delete
+     */
+    where?: AlbumWhereInput
+    /**
+     * Limit how many Albums to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Album.tracks
+   */
+  export type Album$tracksArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    where?: TrackWhereInput
+    orderBy?: TrackOrderByWithRelationInput | TrackOrderByWithRelationInput[]
+    cursor?: TrackWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: TrackScalarFieldEnum | TrackScalarFieldEnum[]
+  }
+
+  /**
+   * Album without action
+   */
+  export type AlbumDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Album
+     */
+    select?: AlbumSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Album
+     */
+    omit?: AlbumOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: AlbumInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model Track
+   */
+
+  export type AggregateTrack = {
+    _count: TrackCountAggregateOutputType | null
+    _min: TrackMinAggregateOutputType | null
+    _max: TrackMaxAggregateOutputType | null
+  }
+
+  export type TrackMinAggregateOutputType = {
+    id: string | null
+    title: string | null
+    albumId: string | null
+    artist: string | null
+    duration: string | null
+    remixers: string | null
+    trackBucketKey: string | null
+  }
+
+  export type TrackMaxAggregateOutputType = {
+    id: string | null
+    title: string | null
+    albumId: string | null
+    artist: string | null
+    duration: string | null
+    remixers: string | null
+    trackBucketKey: string | null
+  }
+
+  export type TrackCountAggregateOutputType = {
+    id: number
+    title: number
+    albumId: number
+    artist: number
+    duration: number
+    remixers: number
+    trackBucketKey: number
+    _all: number
+  }
+
+
+  export type TrackMinAggregateInputType = {
+    id?: true
+    title?: true
+    albumId?: true
+    artist?: true
+    duration?: true
+    remixers?: true
+    trackBucketKey?: true
+  }
+
+  export type TrackMaxAggregateInputType = {
+    id?: true
+    title?: true
+    albumId?: true
+    artist?: true
+    duration?: true
+    remixers?: true
+    trackBucketKey?: true
+  }
+
+  export type TrackCountAggregateInputType = {
+    id?: true
+    title?: true
+    albumId?: true
+    artist?: true
+    duration?: true
+    remixers?: true
+    trackBucketKey?: true
+    _all?: true
+  }
+
+  export type TrackAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Track to aggregate.
+     */
+    where?: TrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tracks to fetch.
+     */
+    orderBy?: TrackOrderByWithRelationInput | TrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: TrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tracks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned Tracks
+    **/
+    _count?: true | TrackCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: TrackMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: TrackMaxAggregateInputType
+  }
+
+  export type GetTrackAggregateType<T extends TrackAggregateArgs> = {
+        [P in keyof T & keyof AggregateTrack]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTrack[P]>
+      : GetScalarType<T[P], AggregateTrack[P]>
+  }
+
+
+
+
+  export type TrackGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: TrackWhereInput
+    orderBy?: TrackOrderByWithAggregationInput | TrackOrderByWithAggregationInput[]
+    by: TrackScalarFieldEnum[] | TrackScalarFieldEnum
+    having?: TrackScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: TrackCountAggregateInputType | true
+    _min?: TrackMinAggregateInputType
+    _max?: TrackMaxAggregateInputType
+  }
+
+  export type TrackGroupByOutputType = {
+    id: string
+    title: string
+    albumId: string
+    artist: string
+    duration: string
+    remixers: string
+    trackBucketKey: string
+    _count: TrackCountAggregateOutputType | null
+    _min: TrackMinAggregateOutputType | null
+    _max: TrackMaxAggregateOutputType | null
+  }
+
+  type GetTrackGroupByPayload<T extends TrackGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<TrackGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof TrackGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], TrackGroupByOutputType[P]>
+            : GetScalarType<T[P], TrackGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type TrackSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    albumId?: boolean
+    artist?: boolean
+    duration?: boolean
+    remixers?: boolean
+    trackBucketKey?: boolean
+    album?: boolean | AlbumDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["track"]>
+
+  export type TrackSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    albumId?: boolean
+    artist?: boolean
+    duration?: boolean
+    remixers?: boolean
+    trackBucketKey?: boolean
+    album?: boolean | AlbumDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["track"]>
+
+  export type TrackSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    title?: boolean
+    albumId?: boolean
+    artist?: boolean
+    duration?: boolean
+    remixers?: boolean
+    trackBucketKey?: boolean
+    album?: boolean | AlbumDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["track"]>
+
+  export type TrackSelectScalar = {
+    id?: boolean
+    title?: boolean
+    albumId?: boolean
+    artist?: boolean
+    duration?: boolean
+    remixers?: boolean
+    trackBucketKey?: boolean
+  }
+
+  export type TrackOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "title" | "albumId" | "artist" | "duration" | "remixers" | "trackBucketKey", ExtArgs["result"]["track"]>
+  export type TrackInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    album?: boolean | AlbumDefaultArgs<ExtArgs>
+  }
+  export type TrackIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    album?: boolean | AlbumDefaultArgs<ExtArgs>
+  }
+  export type TrackIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    album?: boolean | AlbumDefaultArgs<ExtArgs>
+  }
+
+  export type $TrackPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Track"
+    objects: {
+      album: Prisma.$AlbumPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      title: string
+      albumId: string
+      artist: string
+      duration: string
+      remixers: string
+      trackBucketKey: string
+    }, ExtArgs["result"]["track"]>
+    composites: {}
+  }
+
+  type TrackGetPayload<S extends boolean | null | undefined | TrackDefaultArgs> = $Result.GetResult<Prisma.$TrackPayload, S>
+
+  type TrackCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<TrackFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: TrackCountAggregateInputType | true
+    }
+
+  export interface TrackDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Track'], meta: { name: 'Track' } }
+    /**
+     * Find zero or one Track that matches the filter.
+     * @param {TrackFindUniqueArgs} args - Arguments to find a Track
+     * @example
+     * // Get one Track
+     * const track = await prisma.track.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends TrackFindUniqueArgs>(args: SelectSubset<T, TrackFindUniqueArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Track that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {TrackFindUniqueOrThrowArgs} args - Arguments to find a Track
+     * @example
+     * // Get one Track
+     * const track = await prisma.track.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends TrackFindUniqueOrThrowArgs>(args: SelectSubset<T, TrackFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Track that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackFindFirstArgs} args - Arguments to find a Track
+     * @example
+     * // Get one Track
+     * const track = await prisma.track.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends TrackFindFirstArgs>(args?: SelectSubset<T, TrackFindFirstArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Track that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackFindFirstOrThrowArgs} args - Arguments to find a Track
+     * @example
+     * // Get one Track
+     * const track = await prisma.track.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends TrackFindFirstOrThrowArgs>(args?: SelectSubset<T, TrackFindFirstOrThrowArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tracks that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tracks
+     * const tracks = await prisma.track.findMany()
+     * 
+     * // Get first 10 Tracks
+     * const tracks = await prisma.track.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const trackWithIdOnly = await prisma.track.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends TrackFindManyArgs>(args?: SelectSubset<T, TrackFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Track.
+     * @param {TrackCreateArgs} args - Arguments to create a Track.
+     * @example
+     * // Create one Track
+     * const Track = await prisma.track.create({
+     *   data: {
+     *     // ... data to create a Track
+     *   }
+     * })
+     * 
+     */
+    create<T extends TrackCreateArgs>(args: SelectSubset<T, TrackCreateArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tracks.
+     * @param {TrackCreateManyArgs} args - Arguments to create many Tracks.
+     * @example
+     * // Create many Tracks
+     * const track = await prisma.track.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends TrackCreateManyArgs>(args?: SelectSubset<T, TrackCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create many Tracks and returns the data saved in the database.
+     * @param {TrackCreateManyAndReturnArgs} args - Arguments to create many Tracks.
+     * @example
+     * // Create many Tracks
+     * const track = await prisma.track.createManyAndReturn({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Create many Tracks and only return the `id`
+     * const trackWithIdOnly = await prisma.track.createManyAndReturn({
+     *   select: { id: true },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    createManyAndReturn<T extends TrackCreateManyAndReturnArgs>(args?: SelectSubset<T, TrackCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Delete a Track.
+     * @param {TrackDeleteArgs} args - Arguments to delete one Track.
+     * @example
+     * // Delete one Track
+     * const Track = await prisma.track.delete({
+     *   where: {
+     *     // ... filter to delete one Track
+     *   }
+     * })
+     * 
+     */
+    delete<T extends TrackDeleteArgs>(args: SelectSubset<T, TrackDeleteArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Track.
+     * @param {TrackUpdateArgs} args - Arguments to update one Track.
+     * @example
+     * // Update one Track
+     * const track = await prisma.track.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends TrackUpdateArgs>(args: SelectSubset<T, TrackUpdateArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tracks.
+     * @param {TrackDeleteManyArgs} args - Arguments to filter Tracks to delete.
+     * @example
+     * // Delete a few Tracks
+     * const { count } = await prisma.track.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends TrackDeleteManyArgs>(args?: SelectSubset<T, TrackDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tracks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tracks
+     * const track = await prisma.track.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends TrackUpdateManyArgs>(args: SelectSubset<T, TrackUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tracks and returns the data updated in the database.
+     * @param {TrackUpdateManyAndReturnArgs} args - Arguments to update many Tracks.
+     * @example
+     * // Update many Tracks
+     * const track = await prisma.track.updateManyAndReturn({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * 
+     * // Update zero or more Tracks and only return the `id`
+     * const trackWithIdOnly = await prisma.track.updateManyAndReturn({
+     *   select: { id: true },
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * 
+     */
+    updateManyAndReturn<T extends TrackUpdateManyAndReturnArgs>(args: SelectSubset<T, TrackUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
+
+    /**
+     * Create or update one Track.
+     * @param {TrackUpsertArgs} args - Arguments to update or create a Track.
+     * @example
+     * // Update or create a Track
+     * const track = await prisma.track.upsert({
+     *   create: {
+     *     // ... data to create a Track
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Track we want to update
+     *   }
+     * })
+     */
+    upsert<T extends TrackUpsertArgs>(args: SelectSubset<T, TrackUpsertArgs<ExtArgs>>): Prisma__TrackClient<$Result.GetResult<Prisma.$TrackPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tracks.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackCountArgs} args - Arguments to filter Tracks to count.
+     * @example
+     * // Count the number of Tracks
+     * const count = await prisma.track.count({
+     *   where: {
+     *     // ... the filter for the Tracks we want to count
+     *   }
+     * })
+    **/
+    count<T extends TrackCountArgs>(
+      args?: Subset<T, TrackCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], TrackCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Track.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends TrackAggregateArgs>(args: Subset<T, TrackAggregateArgs>): Prisma.PrismaPromise<GetTrackAggregateType<T>>
+
+    /**
+     * Group by Track.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {TrackGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends TrackGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: TrackGroupByArgs['orderBy'] }
+        : { orderBy?: TrackGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, TrackGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTrackGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the Track model
+   */
+  readonly fields: TrackFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for Track.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__TrackClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    album<T extends AlbumDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AlbumDefaultArgs<ExtArgs>>): Prisma__AlbumClient<$Result.GetResult<Prisma.$AlbumPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the Track model
+   */
+  interface TrackFieldRefs {
+    readonly id: FieldRef<"Track", 'String'>
+    readonly title: FieldRef<"Track", 'String'>
+    readonly albumId: FieldRef<"Track", 'String'>
+    readonly artist: FieldRef<"Track", 'String'>
+    readonly duration: FieldRef<"Track", 'String'>
+    readonly remixers: FieldRef<"Track", 'String'>
+    readonly trackBucketKey: FieldRef<"Track", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * Track findUnique
+   */
+  export type TrackFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter, which Track to fetch.
+     */
+    where: TrackWhereUniqueInput
+  }
+
+  /**
+   * Track findUniqueOrThrow
+   */
+  export type TrackFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter, which Track to fetch.
+     */
+    where: TrackWhereUniqueInput
+  }
+
+  /**
+   * Track findFirst
+   */
+  export type TrackFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter, which Track to fetch.
+     */
+    where?: TrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tracks to fetch.
+     */
+    orderBy?: TrackOrderByWithRelationInput | TrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Tracks.
+     */
+    cursor?: TrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tracks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Tracks.
+     */
+    distinct?: TrackScalarFieldEnum | TrackScalarFieldEnum[]
+  }
+
+  /**
+   * Track findFirstOrThrow
+   */
+  export type TrackFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter, which Track to fetch.
+     */
+    where?: TrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tracks to fetch.
+     */
+    orderBy?: TrackOrderByWithRelationInput | TrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for Tracks.
+     */
+    cursor?: TrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tracks.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of Tracks.
+     */
+    distinct?: TrackScalarFieldEnum | TrackScalarFieldEnum[]
+  }
+
+  /**
+   * Track findMany
+   */
+  export type TrackFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter, which Tracks to fetch.
+     */
+    where?: TrackWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of Tracks to fetch.
+     */
+    orderBy?: TrackOrderByWithRelationInput | TrackOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing Tracks.
+     */
+    cursor?: TrackWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` Tracks from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` Tracks.
+     */
+    skip?: number
+    distinct?: TrackScalarFieldEnum | TrackScalarFieldEnum[]
+  }
+
+  /**
+   * Track create
+   */
+  export type TrackCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * The data needed to create a Track.
+     */
+    data: XOR<TrackCreateInput, TrackUncheckedCreateInput>
+  }
+
+  /**
+   * Track createMany
+   */
+  export type TrackCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many Tracks.
+     */
+    data: TrackCreateManyInput | TrackCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * Track createManyAndReturn
+   */
+  export type TrackCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelectCreateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * The data used to create many Tracks.
+     */
+    data: TrackCreateManyInput | TrackCreateManyInput[]
+    skipDuplicates?: boolean
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackIncludeCreateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Track update
+   */
+  export type TrackUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * The data needed to update a Track.
+     */
+    data: XOR<TrackUpdateInput, TrackUncheckedUpdateInput>
+    /**
+     * Choose, which Track to update.
+     */
+    where: TrackWhereUniqueInput
+  }
+
+  /**
+   * Track updateMany
+   */
+  export type TrackUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update Tracks.
+     */
+    data: XOR<TrackUpdateManyMutationInput, TrackUncheckedUpdateManyInput>
+    /**
+     * Filter which Tracks to update
+     */
+    where?: TrackWhereInput
+    /**
+     * Limit how many Tracks to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * Track updateManyAndReturn
+   */
+  export type TrackUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelectUpdateManyAndReturn<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * The data used to update Tracks.
+     */
+    data: XOR<TrackUpdateManyMutationInput, TrackUncheckedUpdateManyInput>
+    /**
+     * Filter which Tracks to update
+     */
+    where?: TrackWhereInput
+    /**
+     * Limit how many Tracks to update.
+     */
+    limit?: number
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackIncludeUpdateManyAndReturn<ExtArgs> | null
+  }
+
+  /**
+   * Track upsert
+   */
+  export type TrackUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * The filter to search for the Track to update in case it exists.
+     */
+    where: TrackWhereUniqueInput
+    /**
+     * In case the Track found by the `where` argument doesn't exist, create a new Track with this data.
+     */
+    create: XOR<TrackCreateInput, TrackUncheckedCreateInput>
+    /**
+     * In case the Track was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<TrackUpdateInput, TrackUncheckedUpdateInput>
+  }
+
+  /**
+   * Track delete
+   */
+  export type TrackDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+    /**
+     * Filter which Track to delete.
+     */
+    where: TrackWhereUniqueInput
+  }
+
+  /**
+   * Track deleteMany
+   */
+  export type TrackDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which Tracks to delete
+     */
+    where?: TrackWhereInput
+    /**
+     * Limit how many Tracks to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * Track without action
+   */
+  export type TrackDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Track
+     */
+    select?: TrackSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the Track
+     */
+    omit?: TrackOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: TrackInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -1882,11 +4235,34 @@ export namespace Prisma {
     id: 'id',
     name: 'name',
     caption: 'caption',
-    imageUrl: 'imageUrl',
+    imageBucketKey: 'imageBucketKey',
     createdAt: 'createdAt'
   };
 
   export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
+
+
+  export const AlbumScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    artist: 'artist',
+    albumArtBucketKey: 'albumArtBucketKey'
+  };
+
+  export type AlbumScalarFieldEnum = (typeof AlbumScalarFieldEnum)[keyof typeof AlbumScalarFieldEnum]
+
+
+  export const TrackScalarFieldEnum: {
+    id: 'id',
+    title: 'title',
+    albumId: 'albumId',
+    artist: 'artist',
+    duration: 'duration',
+    remixers: 'remixers',
+    trackBucketKey: 'trackBucketKey'
+  };
+
+  export type TrackScalarFieldEnum = (typeof TrackScalarFieldEnum)[keyof typeof TrackScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -1962,7 +4338,7 @@ export namespace Prisma {
     id?: StringFilter<"Image"> | string
     name?: StringFilter<"Image"> | string
     caption?: StringFilter<"Image"> | string
-    imageUrl?: StringFilter<"Image"> | string
+    imageBucketKey?: StringFilter<"Image"> | string
     createdAt?: DateTimeFilter<"Image"> | Date | string
   }
 
@@ -1970,7 +4346,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     caption?: SortOrder
-    imageUrl?: SortOrder
+    imageBucketKey?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -1981,7 +4357,7 @@ export namespace Prisma {
     NOT?: ImageWhereInput | ImageWhereInput[]
     name?: StringFilter<"Image"> | string
     caption?: StringFilter<"Image"> | string
-    imageUrl?: StringFilter<"Image"> | string
+    imageBucketKey?: StringFilter<"Image"> | string
     createdAt?: DateTimeFilter<"Image"> | Date | string
   }, "id">
 
@@ -1989,7 +4365,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     caption?: SortOrder
-    imageUrl?: SortOrder
+    imageBucketKey?: SortOrder
     createdAt?: SortOrder
     _count?: ImageCountOrderByAggregateInput
     _max?: ImageMaxOrderByAggregateInput
@@ -2003,15 +4379,130 @@ export namespace Prisma {
     id?: StringWithAggregatesFilter<"Image"> | string
     name?: StringWithAggregatesFilter<"Image"> | string
     caption?: StringWithAggregatesFilter<"Image"> | string
-    imageUrl?: StringWithAggregatesFilter<"Image"> | string
+    imageBucketKey?: StringWithAggregatesFilter<"Image"> | string
     createdAt?: DateTimeWithAggregatesFilter<"Image"> | Date | string
+  }
+
+  export type AlbumWhereInput = {
+    AND?: AlbumWhereInput | AlbumWhereInput[]
+    OR?: AlbumWhereInput[]
+    NOT?: AlbumWhereInput | AlbumWhereInput[]
+    id?: StringFilter<"Album"> | string
+    name?: StringFilter<"Album"> | string
+    artist?: StringFilter<"Album"> | string
+    albumArtBucketKey?: StringFilter<"Album"> | string
+    tracks?: TrackListRelationFilter
+  }
+
+  export type AlbumOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    artist?: SortOrder
+    albumArtBucketKey?: SortOrder
+    tracks?: TrackOrderByRelationAggregateInput
+  }
+
+  export type AlbumWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: AlbumWhereInput | AlbumWhereInput[]
+    OR?: AlbumWhereInput[]
+    NOT?: AlbumWhereInput | AlbumWhereInput[]
+    name?: StringFilter<"Album"> | string
+    artist?: StringFilter<"Album"> | string
+    albumArtBucketKey?: StringFilter<"Album"> | string
+    tracks?: TrackListRelationFilter
+  }, "id">
+
+  export type AlbumOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    artist?: SortOrder
+    albumArtBucketKey?: SortOrder
+    _count?: AlbumCountOrderByAggregateInput
+    _max?: AlbumMaxOrderByAggregateInput
+    _min?: AlbumMinOrderByAggregateInput
+  }
+
+  export type AlbumScalarWhereWithAggregatesInput = {
+    AND?: AlbumScalarWhereWithAggregatesInput | AlbumScalarWhereWithAggregatesInput[]
+    OR?: AlbumScalarWhereWithAggregatesInput[]
+    NOT?: AlbumScalarWhereWithAggregatesInput | AlbumScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Album"> | string
+    name?: StringWithAggregatesFilter<"Album"> | string
+    artist?: StringWithAggregatesFilter<"Album"> | string
+    albumArtBucketKey?: StringWithAggregatesFilter<"Album"> | string
+  }
+
+  export type TrackWhereInput = {
+    AND?: TrackWhereInput | TrackWhereInput[]
+    OR?: TrackWhereInput[]
+    NOT?: TrackWhereInput | TrackWhereInput[]
+    id?: StringFilter<"Track"> | string
+    title?: StringFilter<"Track"> | string
+    albumId?: StringFilter<"Track"> | string
+    artist?: StringFilter<"Track"> | string
+    duration?: StringFilter<"Track"> | string
+    remixers?: StringFilter<"Track"> | string
+    trackBucketKey?: StringFilter<"Track"> | string
+    album?: XOR<AlbumScalarRelationFilter, AlbumWhereInput>
+  }
+
+  export type TrackOrderByWithRelationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    albumId?: SortOrder
+    artist?: SortOrder
+    duration?: SortOrder
+    remixers?: SortOrder
+    trackBucketKey?: SortOrder
+    album?: AlbumOrderByWithRelationInput
+  }
+
+  export type TrackWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: TrackWhereInput | TrackWhereInput[]
+    OR?: TrackWhereInput[]
+    NOT?: TrackWhereInput | TrackWhereInput[]
+    title?: StringFilter<"Track"> | string
+    albumId?: StringFilter<"Track"> | string
+    artist?: StringFilter<"Track"> | string
+    duration?: StringFilter<"Track"> | string
+    remixers?: StringFilter<"Track"> | string
+    trackBucketKey?: StringFilter<"Track"> | string
+    album?: XOR<AlbumScalarRelationFilter, AlbumWhereInput>
+  }, "id">
+
+  export type TrackOrderByWithAggregationInput = {
+    id?: SortOrder
+    title?: SortOrder
+    albumId?: SortOrder
+    artist?: SortOrder
+    duration?: SortOrder
+    remixers?: SortOrder
+    trackBucketKey?: SortOrder
+    _count?: TrackCountOrderByAggregateInput
+    _max?: TrackMaxOrderByAggregateInput
+    _min?: TrackMinOrderByAggregateInput
+  }
+
+  export type TrackScalarWhereWithAggregatesInput = {
+    AND?: TrackScalarWhereWithAggregatesInput | TrackScalarWhereWithAggregatesInput[]
+    OR?: TrackScalarWhereWithAggregatesInput[]
+    NOT?: TrackScalarWhereWithAggregatesInput | TrackScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Track"> | string
+    title?: StringWithAggregatesFilter<"Track"> | string
+    albumId?: StringWithAggregatesFilter<"Track"> | string
+    artist?: StringWithAggregatesFilter<"Track"> | string
+    duration?: StringWithAggregatesFilter<"Track"> | string
+    remixers?: StringWithAggregatesFilter<"Track"> | string
+    trackBucketKey?: StringWithAggregatesFilter<"Track"> | string
   }
 
   export type ImageCreateInput = {
     id?: string
     name: string
     caption: string
-    imageUrl: string
+    imageBucketKey: string
     createdAt?: Date | string
   }
 
@@ -2019,7 +4510,7 @@ export namespace Prisma {
     id?: string
     name: string
     caption: string
-    imageUrl: string
+    imageBucketKey: string
     createdAt?: Date | string
   }
 
@@ -2027,7 +4518,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     caption?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageBucketKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2035,7 +4526,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     caption?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageBucketKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2043,7 +4534,7 @@ export namespace Prisma {
     id?: string
     name: string
     caption: string
-    imageUrl: string
+    imageBucketKey: string
     createdAt?: Date | string
   }
 
@@ -2051,7 +4542,7 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     caption?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageBucketKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
@@ -2059,8 +4550,130 @@ export namespace Prisma {
     id?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     caption?: StringFieldUpdateOperationsInput | string
-    imageUrl?: StringFieldUpdateOperationsInput | string
+    imageBucketKey?: StringFieldUpdateOperationsInput | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+  }
+
+  export type AlbumCreateInput = {
+    id?: string
+    name: string
+    artist: string
+    albumArtBucketKey: string
+    tracks?: TrackCreateNestedManyWithoutAlbumInput
+  }
+
+  export type AlbumUncheckedCreateInput = {
+    id?: string
+    name: string
+    artist: string
+    albumArtBucketKey: string
+    tracks?: TrackUncheckedCreateNestedManyWithoutAlbumInput
+  }
+
+  export type AlbumUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    albumArtBucketKey?: StringFieldUpdateOperationsInput | string
+    tracks?: TrackUpdateManyWithoutAlbumNestedInput
+  }
+
+  export type AlbumUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    albumArtBucketKey?: StringFieldUpdateOperationsInput | string
+    tracks?: TrackUncheckedUpdateManyWithoutAlbumNestedInput
+  }
+
+  export type AlbumCreateManyInput = {
+    id?: string
+    name: string
+    artist: string
+    albumArtBucketKey: string
+  }
+
+  export type AlbumUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    albumArtBucketKey?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AlbumUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    albumArtBucketKey?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TrackCreateInput = {
+    id?: string
+    title: string
+    artist: string
+    duration: string
+    remixers: string
+    trackBucketKey: string
+    album: AlbumCreateNestedOneWithoutTracksInput
+  }
+
+  export type TrackUncheckedCreateInput = {
+    id?: string
+    title: string
+    albumId: string
+    artist: string
+    duration: string
+    remixers: string
+    trackBucketKey: string
+  }
+
+  export type TrackUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
+    remixers?: StringFieldUpdateOperationsInput | string
+    trackBucketKey?: StringFieldUpdateOperationsInput | string
+    album?: AlbumUpdateOneRequiredWithoutTracksNestedInput
+  }
+
+  export type TrackUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    albumId?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
+    remixers?: StringFieldUpdateOperationsInput | string
+    trackBucketKey?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TrackCreateManyInput = {
+    id?: string
+    title: string
+    albumId: string
+    artist: string
+    duration: string
+    remixers: string
+    trackBucketKey: string
+  }
+
+  export type TrackUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
+    remixers?: StringFieldUpdateOperationsInput | string
+    trackBucketKey?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TrackUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    albumId?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
+    remixers?: StringFieldUpdateOperationsInput | string
+    trackBucketKey?: StringFieldUpdateOperationsInput | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -2093,7 +4706,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     caption?: SortOrder
-    imageUrl?: SortOrder
+    imageBucketKey?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -2101,7 +4714,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     caption?: SortOrder
-    imageUrl?: SortOrder
+    imageBucketKey?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -2109,7 +4722,7 @@ export namespace Prisma {
     id?: SortOrder
     name?: SortOrder
     caption?: SortOrder
-    imageUrl?: SortOrder
+    imageBucketKey?: SortOrder
     createdAt?: SortOrder
   }
 
@@ -2145,12 +4758,134 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type TrackListRelationFilter = {
+    every?: TrackWhereInput
+    some?: TrackWhereInput
+    none?: TrackWhereInput
+  }
+
+  export type TrackOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type AlbumCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    artist?: SortOrder
+    albumArtBucketKey?: SortOrder
+  }
+
+  export type AlbumMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    artist?: SortOrder
+    albumArtBucketKey?: SortOrder
+  }
+
+  export type AlbumMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    artist?: SortOrder
+    albumArtBucketKey?: SortOrder
+  }
+
+  export type AlbumScalarRelationFilter = {
+    is?: AlbumWhereInput
+    isNot?: AlbumWhereInput
+  }
+
+  export type TrackCountOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    albumId?: SortOrder
+    artist?: SortOrder
+    duration?: SortOrder
+    remixers?: SortOrder
+    trackBucketKey?: SortOrder
+  }
+
+  export type TrackMaxOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    albumId?: SortOrder
+    artist?: SortOrder
+    duration?: SortOrder
+    remixers?: SortOrder
+    trackBucketKey?: SortOrder
+  }
+
+  export type TrackMinOrderByAggregateInput = {
+    id?: SortOrder
+    title?: SortOrder
+    albumId?: SortOrder
+    artist?: SortOrder
+    duration?: SortOrder
+    remixers?: SortOrder
+    trackBucketKey?: SortOrder
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
 
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
+  }
+
+  export type TrackCreateNestedManyWithoutAlbumInput = {
+    create?: XOR<TrackCreateWithoutAlbumInput, TrackUncheckedCreateWithoutAlbumInput> | TrackCreateWithoutAlbumInput[] | TrackUncheckedCreateWithoutAlbumInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutAlbumInput | TrackCreateOrConnectWithoutAlbumInput[]
+    createMany?: TrackCreateManyAlbumInputEnvelope
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+  }
+
+  export type TrackUncheckedCreateNestedManyWithoutAlbumInput = {
+    create?: XOR<TrackCreateWithoutAlbumInput, TrackUncheckedCreateWithoutAlbumInput> | TrackCreateWithoutAlbumInput[] | TrackUncheckedCreateWithoutAlbumInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutAlbumInput | TrackCreateOrConnectWithoutAlbumInput[]
+    createMany?: TrackCreateManyAlbumInputEnvelope
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+  }
+
+  export type TrackUpdateManyWithoutAlbumNestedInput = {
+    create?: XOR<TrackCreateWithoutAlbumInput, TrackUncheckedCreateWithoutAlbumInput> | TrackCreateWithoutAlbumInput[] | TrackUncheckedCreateWithoutAlbumInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutAlbumInput | TrackCreateOrConnectWithoutAlbumInput[]
+    upsert?: TrackUpsertWithWhereUniqueWithoutAlbumInput | TrackUpsertWithWhereUniqueWithoutAlbumInput[]
+    createMany?: TrackCreateManyAlbumInputEnvelope
+    set?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    disconnect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    delete?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    update?: TrackUpdateWithWhereUniqueWithoutAlbumInput | TrackUpdateWithWhereUniqueWithoutAlbumInput[]
+    updateMany?: TrackUpdateManyWithWhereWithoutAlbumInput | TrackUpdateManyWithWhereWithoutAlbumInput[]
+    deleteMany?: TrackScalarWhereInput | TrackScalarWhereInput[]
+  }
+
+  export type TrackUncheckedUpdateManyWithoutAlbumNestedInput = {
+    create?: XOR<TrackCreateWithoutAlbumInput, TrackUncheckedCreateWithoutAlbumInput> | TrackCreateWithoutAlbumInput[] | TrackUncheckedCreateWithoutAlbumInput[]
+    connectOrCreate?: TrackCreateOrConnectWithoutAlbumInput | TrackCreateOrConnectWithoutAlbumInput[]
+    upsert?: TrackUpsertWithWhereUniqueWithoutAlbumInput | TrackUpsertWithWhereUniqueWithoutAlbumInput[]
+    createMany?: TrackCreateManyAlbumInputEnvelope
+    set?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    disconnect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    delete?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    connect?: TrackWhereUniqueInput | TrackWhereUniqueInput[]
+    update?: TrackUpdateWithWhereUniqueWithoutAlbumInput | TrackUpdateWithWhereUniqueWithoutAlbumInput[]
+    updateMany?: TrackUpdateManyWithWhereWithoutAlbumInput | TrackUpdateManyWithWhereWithoutAlbumInput[]
+    deleteMany?: TrackScalarWhereInput | TrackScalarWhereInput[]
+  }
+
+  export type AlbumCreateNestedOneWithoutTracksInput = {
+    create?: XOR<AlbumCreateWithoutTracksInput, AlbumUncheckedCreateWithoutTracksInput>
+    connectOrCreate?: AlbumCreateOrConnectWithoutTracksInput
+    connect?: AlbumWhereUniqueInput
+  }
+
+  export type AlbumUpdateOneRequiredWithoutTracksNestedInput = {
+    create?: XOR<AlbumCreateWithoutTracksInput, AlbumUncheckedCreateWithoutTracksInput>
+    connectOrCreate?: AlbumCreateOrConnectWithoutTracksInput
+    upsert?: AlbumUpsertWithoutTracksInput
+    connect?: AlbumWhereUniqueInput
+    update?: XOR<XOR<AlbumUpdateToOneWithWhereWithoutTracksInput, AlbumUpdateWithoutTracksInput>, AlbumUncheckedUpdateWithoutTracksInput>
   }
 
   export type NestedStringFilter<$PrismaModel = never> = {
@@ -2218,6 +4953,143 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type TrackCreateWithoutAlbumInput = {
+    id?: string
+    title: string
+    artist: string
+    duration: string
+    remixers: string
+    trackBucketKey: string
+  }
+
+  export type TrackUncheckedCreateWithoutAlbumInput = {
+    id?: string
+    title: string
+    artist: string
+    duration: string
+    remixers: string
+    trackBucketKey: string
+  }
+
+  export type TrackCreateOrConnectWithoutAlbumInput = {
+    where: TrackWhereUniqueInput
+    create: XOR<TrackCreateWithoutAlbumInput, TrackUncheckedCreateWithoutAlbumInput>
+  }
+
+  export type TrackCreateManyAlbumInputEnvelope = {
+    data: TrackCreateManyAlbumInput | TrackCreateManyAlbumInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type TrackUpsertWithWhereUniqueWithoutAlbumInput = {
+    where: TrackWhereUniqueInput
+    update: XOR<TrackUpdateWithoutAlbumInput, TrackUncheckedUpdateWithoutAlbumInput>
+    create: XOR<TrackCreateWithoutAlbumInput, TrackUncheckedCreateWithoutAlbumInput>
+  }
+
+  export type TrackUpdateWithWhereUniqueWithoutAlbumInput = {
+    where: TrackWhereUniqueInput
+    data: XOR<TrackUpdateWithoutAlbumInput, TrackUncheckedUpdateWithoutAlbumInput>
+  }
+
+  export type TrackUpdateManyWithWhereWithoutAlbumInput = {
+    where: TrackScalarWhereInput
+    data: XOR<TrackUpdateManyMutationInput, TrackUncheckedUpdateManyWithoutAlbumInput>
+  }
+
+  export type TrackScalarWhereInput = {
+    AND?: TrackScalarWhereInput | TrackScalarWhereInput[]
+    OR?: TrackScalarWhereInput[]
+    NOT?: TrackScalarWhereInput | TrackScalarWhereInput[]
+    id?: StringFilter<"Track"> | string
+    title?: StringFilter<"Track"> | string
+    albumId?: StringFilter<"Track"> | string
+    artist?: StringFilter<"Track"> | string
+    duration?: StringFilter<"Track"> | string
+    remixers?: StringFilter<"Track"> | string
+    trackBucketKey?: StringFilter<"Track"> | string
+  }
+
+  export type AlbumCreateWithoutTracksInput = {
+    id?: string
+    name: string
+    artist: string
+    albumArtBucketKey: string
+  }
+
+  export type AlbumUncheckedCreateWithoutTracksInput = {
+    id?: string
+    name: string
+    artist: string
+    albumArtBucketKey: string
+  }
+
+  export type AlbumCreateOrConnectWithoutTracksInput = {
+    where: AlbumWhereUniqueInput
+    create: XOR<AlbumCreateWithoutTracksInput, AlbumUncheckedCreateWithoutTracksInput>
+  }
+
+  export type AlbumUpsertWithoutTracksInput = {
+    update: XOR<AlbumUpdateWithoutTracksInput, AlbumUncheckedUpdateWithoutTracksInput>
+    create: XOR<AlbumCreateWithoutTracksInput, AlbumUncheckedCreateWithoutTracksInput>
+    where?: AlbumWhereInput
+  }
+
+  export type AlbumUpdateToOneWithWhereWithoutTracksInput = {
+    where?: AlbumWhereInput
+    data: XOR<AlbumUpdateWithoutTracksInput, AlbumUncheckedUpdateWithoutTracksInput>
+  }
+
+  export type AlbumUpdateWithoutTracksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    albumArtBucketKey?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type AlbumUncheckedUpdateWithoutTracksInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    name?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    albumArtBucketKey?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TrackCreateManyAlbumInput = {
+    id?: string
+    title: string
+    artist: string
+    duration: string
+    remixers: string
+    trackBucketKey: string
+  }
+
+  export type TrackUpdateWithoutAlbumInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
+    remixers?: StringFieldUpdateOperationsInput | string
+    trackBucketKey?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TrackUncheckedUpdateWithoutAlbumInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
+    remixers?: StringFieldUpdateOperationsInput | string
+    trackBucketKey?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type TrackUncheckedUpdateManyWithoutAlbumInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    title?: StringFieldUpdateOperationsInput | string
+    artist?: StringFieldUpdateOperationsInput | string
+    duration?: StringFieldUpdateOperationsInput | string
+    remixers?: StringFieldUpdateOperationsInput | string
+    trackBucketKey?: StringFieldUpdateOperationsInput | string
   }
 
 
