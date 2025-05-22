@@ -1,5 +1,6 @@
 'use client'
 import { checkAuth } from "@/actions/auth-actions";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
@@ -22,7 +23,7 @@ export default function AuthProvider({ children, }: Readonly<{ children: React.R
     }, [])
 
     if (!auth) {
-        return <div>not authenticated</div>
+        return <div>not authenticated - <Link className="text-amber-500 cursor-pointer" href="/admin/auth/login">log in </Link>to continue</div>
     }
 
     return (<>{ children }</>)

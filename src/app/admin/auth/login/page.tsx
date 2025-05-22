@@ -4,7 +4,7 @@ import { loginAction } from '@/actions/auth-actions';
 import { useActionState, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-const initialState = { success: false, error: '' };
+const initialState = { success: false, data: undefined as never, error: '' };
 
 export default function LoginPage() {
     const [state, formAction] = useActionState(loginAction, initialState);
@@ -12,7 +12,7 @@ export default function LoginPage() {
 
     useEffect(() => {
         if (state.success) {
-            router.push('/admin/dashboard');
+            router.push('/admin/dashboard/art');
         }
     }, [state.success, router]);
 
@@ -33,12 +33,12 @@ export default function LoginPage() {
                         placeholder="pw"
                         className="w-full p-2 border border-gray-300 rounded"
                     />
-                    {state.error && <div className="text-red-500">{state.error}</div>}
+                    {!state.success && state.error && <div className="text-red-500">{state.error}</div>}
                     <button
                         type="submit"
                         className="w-full bg-blue-600 text-white py-2 rounded"
                     >
-                        log in
+                        log In
                     </button>
                 </form>
             </div>

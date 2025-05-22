@@ -21,7 +21,7 @@ export async function loginAction(prevState: ActionResult<SessionData>, formData
     ) {
         session.isLoggedIn = true;
         await session.save();
-        return { success: true };
+        return { success: true, data: { isLoggedIn: session.isLoggedIn } };
     }
 
     return { success: false, error: 'Invalid credentials' };
@@ -32,7 +32,7 @@ export async function logoutAction(): Promise<ActionResult<SessionData>> {
 
     if (session) {
         session.destroy()
-        return { success: true }
+        return { success: true, data: session }
     };
 
     return { success: false, error: "Failed to logout" };

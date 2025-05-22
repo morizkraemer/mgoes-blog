@@ -1,7 +1,9 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from 'next-themes'
-import "./globals.css"
+import "./public.css"
+import { AudioProvider } from "./components/AudioProvider";
+import PlayerUI from "./components/PlayerUi";
 
 const geistSans = Geist({
     variable: "--font-geist-sans",
@@ -24,18 +26,19 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            enableSystem
-        >
-            <html lang="en" suppressHydrationWarning>
-                <body
-                    className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-                >
-                    {children}
-                </body>
-            </html>
-        </ThemeProvider>
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+            >
+                    <AudioProvider>
+                        <div className="h-[100svh] flex-col flex">
+                            <div className="flex-1 overflow-scroll">{children}</div>
+                            <div className="h-32">
+                                <PlayerUI />
+                            </div>
+                        </div>
+                    </AudioProvider>
+            </body>
+        </html>
     );
 }

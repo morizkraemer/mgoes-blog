@@ -4,7 +4,7 @@ import { ThemeProvider } from 'next-themes'
 import AuthProvider from "./components/AuthProvider";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { AppSidebar } from "./components/Sidebar";
-import "./globals.css"
+import "./dashboard.css"
 
 
 const geistSans = Geist({
@@ -25,28 +25,26 @@ export const metadata: Metadata = {
 export default function DashboardLayout({ children, }: Readonly<{ children: React.ReactNode; }>) {
 
     return (
-        <div className="h-[100vh]">
-            <ThemeProvider
-                attribute="class"
-                defaultTheme="dark"
-                enableSystem
-                disableTransitionOnChange
+        <html lang="en" suppressHydrationWarning>
+            <body
+                className={`${geistMono.variable} antialiased`}
             >
-                <html lang="en" suppressHydrationWarning>
-                    <body
-                        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-                    >
-                        <AuthProvider>
-                            <SidebarProvider>
-                                <AppSidebar />
-                                <main className="h-full w-full p-5">
-                                    {children}
-                                </main>
-                            </SidebarProvider>
-                        </AuthProvider>
-                    </body>
-                </html>
-            </ThemeProvider>
-        </div>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="dark"
+                    enableSystem
+                    disableTransitionOnChange
+                >
+                    <AuthProvider>
+                        <SidebarProvider>
+                            <AppSidebar />
+                            <main className="h-full w-full p-5">
+                                {children}
+                            </main>
+                        </SidebarProvider>
+                    </AuthProvider>
+                </ThemeProvider>
+            </body>
+        </html>
     )
 }

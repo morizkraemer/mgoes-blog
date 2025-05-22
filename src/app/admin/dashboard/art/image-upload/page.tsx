@@ -10,8 +10,10 @@ import { imageSchema, ImageSchemaType } from "@/types/schemas";
 import { addImageToDb } from "@/actions/db-images-actions";
 import axios from 'axios'
 import { getSignedUploadUrl } from "@/actions/r2-actions";
+import { useRouter } from "next/navigation";
 
 export default function page() {
+    const router = useRouter();
     const form = useForm<ImageSchemaType>({
         resolver: zodResolver(imageSchema),
         defaultValues: {
@@ -25,7 +27,7 @@ export default function page() {
     async function onSubmit(values: ImageSchemaType) {
         try {
             const url = await getSignedUploadUrl(values.file.name)
-            if (url.data) {
+            if (url.success) {
                 const result = await axios.put(url.data.url, values.file, {
                     headers: {
                         "Content-Type": values.file.type
@@ -38,6 +40,7 @@ export default function page() {
                         imageKey: url.data.uniqueKey
                     })
                 }
+                router.push('/admin/dashboard/art')
                 console.log("image uploaded")
             }
 

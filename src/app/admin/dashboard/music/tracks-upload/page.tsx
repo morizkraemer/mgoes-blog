@@ -286,7 +286,7 @@ export default function TracksUploadPage() {
         try {
 
             const albumArtUploadUrl = await getSignedUploadUrl(`AlbumImage-${albumName}-${artist}`)
-            if (!albumArtUploadUrl.data) throw new Error();
+            if (!albumArtUploadUrl.success) throw new Error();
             await axios.put(albumArtUploadUrl.data.url, albumArt);
             uploadedKeys.push(albumArtUploadUrl.data.uniqueKey)
 
@@ -298,7 +298,7 @@ export default function TracksUploadPage() {
                         )
                     );
                     const trackUploadUrl = await getSignedUploadUrl(track.file.name);
-                    if (!trackUploadUrl.data) throw new Error();
+                    if (!trackUploadUrl.success) throw new Error();
                     await axios.put(trackUploadUrl.data.url, track.file)
                     uploadedKeys.push(trackUploadUrl.data.uniqueKey)
                     setTracks(prev =>

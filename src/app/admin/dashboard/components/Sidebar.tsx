@@ -6,13 +6,15 @@ import {
     SidebarFooter,
     SidebarGroup,
     SidebarGroupContent,
-    SidebarGroupLabel,
     SidebarHeader,
     SidebarMenu,
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
 import Link from "next/link"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
+import { Button } from "@/components/ui/button"
+import { logoutAction } from "@/actions/auth-actions"
 
 // Menu items.
 const items = [
@@ -58,9 +60,16 @@ export function AppSidebar() {
             <SidebarFooter>
                 <SidebarMenu>
                     <SidebarMenuItem className="flex justify-end">
-                        <SidebarMenuButton className="w-fit">
-                            <Settings />
-                        </SidebarMenuButton>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger>
+                                    <Settings />
+                                </DropdownMenuTrigger>
+                                <DropdownMenuContent>
+                                    <DropdownMenuItem onClick={logoutAction}>
+                                        logout
+                                    </DropdownMenuItem>
+                                </DropdownMenuContent>
+                            </DropdownMenu>
                     </SidebarMenuItem>
                 </SidebarMenu>
 
