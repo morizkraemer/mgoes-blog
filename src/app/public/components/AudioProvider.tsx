@@ -79,13 +79,12 @@ export const AudioProvider = ({ children }: { children: ReactNode }) => {
     };
 
     const addToQueue = (track: Track) => {
-        if (queue.length > 0) {
-            setQueue((prev) => [...prev, track]);
+        if (queue.length === 0) {
+            load(track)
+            play()
             return
         }
-        setQueue([track])
-        load(track)
-        play()
+        setQueue((prev) => [...prev, track]);
     };
 
     const skipToNext = () => {

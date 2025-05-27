@@ -1,18 +1,12 @@
 'use client'
-import React, { useEffect } from "react";
+import React from "react";
 import { useAudioPlayer } from "@/hooks/useAudioPlayer";
 import { useAudioQueue } from "@/hooks/useAudioQueue";
-import { ChevronsDown, CirclePause, CirclePlay, SkipBack, SkipForward } from "lucide-react";
 import { formatDuration } from "@/lib/utils";
 
 const PlayerUI = () => {
     const { play, pause, isPlaying, currentTrack, playbackPosition, seek, audioRef } = useAudioPlayer();
     const { skipToNext, queue } = useAudioQueue()
-
-    useEffect(() => {
-        console.log(currentTrack)
-
-    }, [currentTrack])
 
     return (
         <div className="border-t p-3 w-full h-full flex flex-col justify-between">

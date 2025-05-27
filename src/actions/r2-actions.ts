@@ -1,5 +1,6 @@
 'use server'
 
+import { logError } from "@/lib/logging";
 import { s3Client } from "@/lib/r2-bucket";
 import { ActionResult } from "@/types/generic-types";
 import { DeleteObjectCommand, PutObjectCommand } from "@aws-sdk/client-s3";
@@ -27,6 +28,7 @@ export async function getSignedUploadUrl(key: string): Promise<ActionResult<resu
         )
         return { success: true, data: { url, uniqueKey } }
     } catch (error) {
+        logError(error)
         return { success: false, error: "r2Error, getSignedUploadUrl" }
     }
 }
@@ -39,8 +41,9 @@ export async function deleteFromBucket(key: string): Promise<ActionResult<null>>
 
     try {
         await s3Client.send(command)
-        return { success: true }
+        return { success: true, data: null }
     } catch (error) {
+        logError(error)
         return { success: false, error: "failed to delete object from bucket" }
     }
 }

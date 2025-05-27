@@ -1,8 +1,8 @@
 'use server'
 import { Image } from "@/generated/prisma";
+import { logError } from "@/lib/logging";
 import { prisma } from "@/lib/prisma";
 import { ActionResult } from "@/types/generic-types";
-import { format } from "path";
 
 type ImageType = {
     name: string;
@@ -11,9 +11,11 @@ type ImageType = {
 }
 
 export async function getAllImages(): Promise<ActionResult<Image[]>> {
-    const images = await prisma.image.findMany({});
-    if (images) {
-        return { success: true, data: images }
+    try {
+        const images = await prisma.image.findMany({});
+            return { success: true, data: images }
+    } catch (error) {
+        logError(error)
     }
 
     return { success: false, error: "failed to get images" }
@@ -29,9 +31,9 @@ export async function addImageToDb(formData: ImageType): Promise<ActionResult<nu
                 imageBucketKey: formData.imageKey
             }
         })
-        return { success: true }
+        return { success: true, data: null }
     } catch (error) {
-        console.log(error)
+        logError(error)
         return { success: false, error: "prisma error failed to create image" }
     }
 }

@@ -41,7 +41,6 @@ export default function page() {
                     })
                 }
                 router.push('/admin/dashboard/art')
-                console.log("image uploaded")
             }
 
         } catch (error) {

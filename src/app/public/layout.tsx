@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { ThemeProvider } from 'next-themes'
 import "./public.css"
 import { AudioProvider } from "./components/AudioProvider";
 import PlayerUI from "./components/PlayerUi";
@@ -27,17 +26,24 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en" suppressHydrationWarning>
+            <head>
+                <link rel="manifest" href="/manifest.json" />
+                <meta name="theme-color" content="#000000" />
+                <meta name="apple-mobile-web-app-capable" content="yes" />
+                <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+                <link rel="apple-touch-icon" href="/bananas.png" />
+            </head>
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                    <AudioProvider>
-                        <div className="h-[100svh] flex-col flex">
-                            <div className="flex-1 overflow-scroll">{children}</div>
-                            <div className="h-32">
-                                <PlayerUI />
-                            </div>
+                <AudioProvider>
+                    <div className="h-[100svh] flex-col flex">
+                        <div className="flex-1 overflow-scroll">{children}</div>
+                        <div className="h-32">
+                            <PlayerUI />
                         </div>
-                    </AudioProvider>
+                    </div>
+                </AudioProvider>
             </body>
         </html>
     );
